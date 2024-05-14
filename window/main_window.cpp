@@ -3,16 +3,49 @@
 #include <QPushButton>
 #include <QHBoxLayout>
 #include <QDebug>
+#include <QUdpSocket>
 
 #include "wid_button.h"
 #include "wid_lab.h"
 #include "wid_left/wid_left.h"
 #include "wid_right/wid_right.h"
 
-#include <QUdpSocket>
+#include "xlsxdocument.h"
+#include "xlsxchartsheet.h"
+#include "xlsxcellrange.h"
+#include "xlsxchart.h"
+#include "xlsxrichstring.h"
+#include "xlsxworkbook.h"
+#include "Tvlog.h"
+
+using namespace QXlsx;
+
 
 main_window::main_window(QWidget *parent) : QWidget(parent)
 {
+    {
+        int row = 1; int col = 1;
+        QXlsx::Document xlsxW;
+        QVariant writeValue = QString("Hello Qt!");
+        xlsxW.write(row, col, writeValue);
+        xlsxW.saveAs("build/Test.xlsx");
+    }
+    {
+        int row = 1; int col = 1;
+        Document xlsxR("build/Test.xlsx"); 
+        if (xlsxR.load())
+        { 
+            Cell* cell = xlsxR.cellAt(row, col); 
+            if ( cell != NULL )
+            {
+                QVariant var = cell->readValue(); 
+                qDebug() << var;
+                std::string s = var.toString().toStdString();
+                vlogd($(s));
+            }
+        }
+    }
+
     QPushButton *butt1 = new QPushButton("butt1",this);
     wid_button *butt2 = new wid_button(this);
     butt2->setText("butt2");

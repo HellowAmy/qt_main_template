@@ -1,3 +1,4 @@
+# == 函数 ==
 # 递归目录并直接包含头文件函数
 function(include_directories_sub root_dir)
     if (IS_DIRECTORY ${root_dir})               
@@ -29,9 +30,11 @@ function(fn_get_include_sub_ls result root_dir)
         set(${result} ${dirlist} PARENT_SCOPE)
     endif()
 endfunction()
+# == 函数 ==
 
 
 
+# ===== 编译入口 =====
 # 项目名
 cmake_minimum_required(VERSION 3.22.1)
 project(hellow)
@@ -48,12 +51,10 @@ set(CMAKE_BUILD_TYPE "Debug")
 # set(CMAKE_BUILD_TYPE "Release")
 
 
-# 包含源文件
+# 源文件 : 包含源文件
 file(GLOB_RECURSE SRC_WINDOW "window/*.cpp")
 file(GLOB_RECURSE SRC_WID "wid/*.cpp")
 
-
-# 源文件
 set(PRO_SRC_FILES 
     main.cpp
     ${SRC_WINDOW} 
@@ -61,18 +62,26 @@ set(PRO_SRC_FILES
 )
 
 
-# 递归扫描子目录头文件
+# 头文件 : 递归扫描子目录头文件
 fn_get_include_sub_ls(PRO_HEAD_WID wid)
+fn_get_include_sub_ls(PRO_INCLUDE include)
 
-
-# 头文件
 set(PRO_HEAD_DIR
+    util
     window
     ${PRO_HEAD_WID}
+    ${PRO_INCLUDE}
 )
 
 
-# 递归扫描头文件并直接加入
+# 外部库文件
+set(PRO_LIB
+    QXlsxQt5
+)
+
+
+
+# # 递归扫描头文件并直接加入
 # include_directories_sub(${CMAKE_SOURCE_DIR}/wid)
 
 
@@ -120,6 +129,6 @@ add_executable(${CMAKE_PROJECT_NAME} ${PRO_SRC_FILES})
 
 
 # 链接库
-target_link_libraries(${CMAKE_PROJECT_NAME} ${PRO_QT_MODULE})
+target_link_libraries(${CMAKE_PROJECT_NAME} ${PRO_QT_MODULE} ${PRO_LIB})
 
 
