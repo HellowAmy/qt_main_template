@@ -57,6 +57,8 @@
         "stop_token": "cpp",
         "thread": "cpp",
         "variant": "cpp",
-        "qpushbutton": "cpp"
+        "qpushbutton": "cpp",
+        "qhboxlayout": "cpp",
+        "qdebug": "cpp"
     }
 }

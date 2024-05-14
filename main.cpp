@@ -3,7 +3,8 @@
 
 #include <iostream>
 
-#include "wid/widget.h"
+// #include "wid/widget.h"
+#include "window/main_window.h"
 
 using namespace std;
 
@@ -14,7 +15,7 @@ int run_main_app(int argc, char *argv[])
 {
     QApplication a(argc,argv);
 
-    widget w;
+    main_window w;
     w.resize(500,500);
     w.show();
 

@@ -25,14 +25,28 @@
             },
         },
         {
+            "label": "CMake Clean",
+            "type": "shell",
+            "command": "rm",
+            "args": [
+                "-rf",
+                "*"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/build/"
+            },
+        },
+        {
             "label": "Run Main Group",
             "type": "shell",
             "command": "cmake",
+            "dependsOrder": "sequence",
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
             "dependsOn": [
+                "CMake Clean",
                 "CMake Create",
                 "CMake Build"
             ]
