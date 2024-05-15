@@ -12,7 +12,6 @@ public:
     ~main_window();
 
 signals:
-    void sn_click();
 
 protected:
 
