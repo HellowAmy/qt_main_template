@@ -22,7 +22,7 @@ int run_main_app(int argc, char *argv[])
     return a.exec();
 }
 
-int run_main_app(int run_value)
+int exit_main_app(int run_value)
 {
     cout<<"exit run value : "<<run_value<<endl;
     return run_value;
@@ -44,5 +44,5 @@ int main(int argc, char *argv[])
 
     int run_value = run_main_app(argc,argv);
 
-    return run_main_app(run_value);
+    return exit_main_app(run_value);
 }
