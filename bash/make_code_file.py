@@ -97,8 +97,12 @@ if __name__ == "__main__":
     tup = get_file_ctx(s_template)
     template_h ,template_c = tup
 
+    print("== finish ==:",len(template_h),len(template_c))
+
     # 写入到目标
-    write_file(perse_h(template_h,s_name),path_h)
-    write_file(perse_c(template_c,s_name),path_c)
+    if len(template_h) > 0:
+        write_file(perse_h(template_h,s_name),path_h)
+    if len(template_c) > 0:  
+        write_file(perse_c(template_c,s_name),path_c)
 
     print("== finish ==")
