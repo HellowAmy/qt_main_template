@@ -76,7 +76,6 @@ set(PRO_HEAD_DIR
 
 # 外部库文件
 set(PRO_LIB
-    QXlsxQt5
 )
 
 
@@ -91,7 +90,6 @@ set(PRO_QT_PACK
     Core
     Gui
     Widgets
-    Network
 )
 
 
@@ -100,7 +98,6 @@ set(PRO_QT_MODULE
     Qt5::Core
     Qt5::Gui
     Qt5::Widgets
-    Qt5::Network
 )
 
 
