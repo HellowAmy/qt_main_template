@@ -30,6 +30,12 @@ function(fn_get_include_sub_ls result root_dir)
         set(${result} ${dirlist} PARENT_SCOPE)
     endif()
 endfunction()
+
+# 递归获取目录下的库文件
+function(fn_get_lib_ls result root_dir)
+    file(GLOB_RECURSE reslib "${root_dir}/*.so*")
+    set(${result} ${reslib} PARENT_SCOPE)
+endfunction()
 # == 函数 ==
 
 
@@ -74,11 +80,8 @@ set(PRO_HEAD_DIR
 )
 
 
-# 外部库文件
-set(PRO_LIB
-    QXlsxQt5
-)
-
+# 库文件 : 指定外部库路径 [需修改库文件与依赖一致]
+fn_get_lib_ls(PRO_LIB lib)
 
 
 # # 递归扫描头文件并直接加入
