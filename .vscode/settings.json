@@ -59,6 +59,7 @@
         "variant": "cpp",
         "qpushbutton": "cpp",
         "qhboxlayout": "cpp",
-        "qdebug": "cpp"
+        "qdebug": "cpp",
+        "qapplication": "cpp"
     }
 }
