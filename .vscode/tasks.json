@@ -37,6 +37,18 @@
             },
         },
         {
+            "label": "CMake Clean Python",
+            "type": "shell",
+            "command": "python3",
+            "args": [
+                "../bash/clean_dir.py",
+                "."
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/build/"
+            },
+        },
+        {
             "label": "Run Main Group",
             "type": "shell",
             "command": "cmake",
@@ -46,7 +58,7 @@
                 "isDefault": true
             },
             "dependsOn": [
-                "CMake Clean",
+                "CMake Clean Python",
                 "CMake Create",
                 "CMake Build"
             ]
